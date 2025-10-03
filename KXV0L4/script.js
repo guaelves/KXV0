@@ -13,7 +13,7 @@ const questions = [
   { word: "1", choices: ["ㄅ<br>ㄟ<br><br>˙<br>ㄓ<br>ㄜ", "ㄅ<br>ㄟ<br><br>˙<br>ㄓ<br>ㄛ"], 
     answer: "ㄅ<br>ㄟ<br><br>˙<br>ㄓ<br>ㄜ" },
   { word: "2", choices: ["ㄙ<br>ㄨ<br><br>ㄅ<br>ㄠ", "ㄕ<br>ㄨ<br><br>ㄅ<br>ㄠ"],
-    answer: "ㄕ<br>ㄨ<br><br>ㄅ<br>ㄠˋ" },
+    answer: "ㄕ<br>ㄨ<br><br>ㄅ<br>ㄠ" },
   { word: "3", choices: ["ㄕ<br>ㄡˇ<br><br>ㄓˇ", "ㄙ<br>ㄡˇ<br><br>ㄗˇ"], 
     answer: "ㄕ<br>ㄡˇ<br><br>ㄓˇ" },
   { word: "4", choices: ["ㄌ<br>ㄚ<br><br>ㄙ<br>ㄡˇ", "ㄌ<br>ㄚ<br><br>ㄕ<br>ㄡˇ"], 
@@ -160,4 +160,5 @@ startBtn.onclick = () => {
   gameContainer.style.display = "block";
   startGame();
 };
+
 
