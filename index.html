@@ -33,12 +33,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column; /* 讓課次與課文上下排列 */
+      flex-direction: column;
       box-shadow: 0 6px 10px rgba(0,0,0,0.15);
       transition: 0.2s;
     }
     .lesson-item:hover {
-      background: #005bbb; /* 滑過變深藍 */
+      background: #005bbb;
       transform: scale(1.05);
     }
     .lesson-title {
@@ -47,6 +47,11 @@
     }
     .lesson-text {
       font-size: 22px;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
@@ -91,5 +96,9 @@
       <div class="lesson-text">（課文名稱）</div>
     </a>
   </div>
+
+  <footer>
+    @2025 guaelves. All rights reserved.
+  </footer>
 </body>
 </html>
