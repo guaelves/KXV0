@@ -12,39 +12,41 @@
     }
     h1 {
       color: #333;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      font-size: 36px;
     }
     .lesson-list {
       display: grid;
       grid-template-columns: repeat(3, 1fr); /* 三欄排列 */
-      gap: 20px;
-      max-width: 800px;
+      gap: 30px;
+      max-width: 900px;
       margin: auto;
     }
     .lesson-item {
       background: #1E90FF;  /* 藍底 */
       color: white;         /* 白字 */
-      padding: 20px;
-      border-radius: 10px;
-      font-size: 18px;
+      padding: 40px 20px;
+      border-radius: 15px;
+      font-size: 22px;
+      font-weight: bold;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column; /* 讓課次與課文上下排列 */
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
       transition: 0.2s;
     }
     .lesson-item:hover {
       background: #005bbb; /* 滑過變深藍 */
+      transform: scale(1.05);
     }
     .lesson-title {
-      font-weight: bold;
-      font-size: 20px;
+      font-size: 26px;
+      margin-bottom: 10px;
     }
     .lesson-text {
-      margin-top: 5px;
-      font-size: 16px;
+      font-size: 22px;
     }
   </style>
 </head>
