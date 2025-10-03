@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>注音選擇題小遊戲(康軒)-一、ㄇㄠㄇㄧ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 首頁：課文圖片頁 -->
+  <div id="intro-container">
+    <h1>熟讀課文後選擇正確圈字哦！</h1>
+    <img src="lesson.png" alt="課文圖片" id="lesson-image" />
+    <br />
+    <button id="start-button">開始測驗</button>
+  </div>
+
+  <!-- 測驗頁面（預設隱藏） -->
+  <div id="game-container" style="display: none;">
+    <h1>注音選擇題</h1>
+    <div id="question-word"></div>
+    <div id="choices"></div>
+    <div id="feedback"></div>
+    <button id="next-button" style="display:none;">下一題</button>
+    <button id="restart-button" style="display:none;">✅重新開始遊戲</button>  
+ 
+<!-- 新增 -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
