@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>注音選擇題小遊戲(康軒)</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 返回首頁按鈕樣式 */
+    #back-home {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #1E90FF;
+      color: white;
+      font-size: 16px;  /* 與重新開始遊戲字體一致 */
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+    #back-home:hover {
+      background: #005bbb;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
 
@@ -24,11 +43,13 @@
     <div id="feedback"></div>
     <button id="next-button" style="display:none;">下一題</button>
     <button id="restart-button" style="display:none;">✅重新開始遊戲</button>  
- 
-<!-- 新增 -->
+  </div>
+
+  <!-- 返回首頁按鈕 -->
+  <div style="text-align: center;">
+    <a id="back-home" href="../index.html">返回首頁選擇</a>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
