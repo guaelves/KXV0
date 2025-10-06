@@ -8,39 +8,60 @@ const feedbackEl = document.getElementById("feedback");
 const nextBtn = document.getElementById("next-button");
 
 
-// 題目資料
-const questions = [
-  { word: "1", choices: ["ㄏ<br>ㄜˊ<br><br>ㄇ<br>ㄚˇ", "ㄏ<br>ㄛˊ<br><br>ㄇ<br>ㄚˇ"], 
-    answer: "ㄏ<br>ㄜˊ<br><br>ㄇ<br>ㄚˇ" },
-  { word: "2", choices: ["ㄧ<br>ㄠˋ<br><br>ㄑ<br>ㄩˋ", "ㄧ<br>ㄠˋ<br><br>ㄑ<br>ㄧˋ"],
-    answer: "ㄧ<br>ㄠˋ<br><br>ㄑ<br>ㄩˋ" },
-  { word: "3", choices: ["ㄆ<br>ㄠˋ<br><br>ㄓ<br>ㄠˇ", "ㄆ<br>ㄠˋ<br><br>ㄗ<br>ㄠˇ"], 
-    answer: "ㄆ<br>ㄠˋ<br><br>ㄗ<br>ㄠˇ" },
-  { word: "4", choices: ["ㄅ<br>ㄢˋ<br><br>ㄌ<br>ㄨˋ", "ㄅ<br>ㄢˋ<br><br>ㄉ<br>ㄨˋ"], 
-    answer: "ㄅ<br>ㄢˋ<br><br>ㄌ<br>ㄨˋ" },
-  { word: "5", choices: ["ㄩˋ<br><br>ㄌ<br>ㄠˋ", "ㄩˋ<br><br>ㄉ<br>ㄠˋ"], 
-    answer: "ㄩˋ<br><br>ㄉ<br>ㄠˋ" },
-  { word: "6", choices: ["ㄏ<br>ㄜˊ<br><br>ㄌ<br>ㄧˊ", "ㄏ<br>ㄛˊ<br><br>ㄌ<br>ㄧˊ"], 
-    answer: "ㄏ<br>ㄜˊ<br><br>ㄌ<br>ㄧˊ" },
-  { word: "7", choices: ["ㄇ<br>ㄤˊ<br><br>˙<br>ㄓ<br>ㄜ", "ㄇ<br>ㄤˊ<br><br>˙<br>ㄓ<br>ㄛ"], 
-    answer: "ㄇ<br>ㄤˊ<br><br>˙<br>ㄓ<br>ㄜ" },
-  { word: "8", choices: ["ㄓ<br>ㄨˊ<br><br>ㄘ<br>ㄠˊ", "ㄓ<br>ㄨˊ<br><br>ㄔ<br>ㄠˊ"], 
-    answer: "ㄓ<br>ㄨˊ<br><br>ㄔ<br>ㄠˊ" },
-  { word: "9", choices: ["ㄅ<br>ㄛ<br><br>ㄌ<br>ㄧˊ", "ㄅ<br>ㄜ<br><br>ㄌ<br>ㄧˊ"], 
-    answer: "ㄅ<br>ㄛ<br><br>ㄌ<br>ㄧˊ" },
-  { word: "10", choices: ["ㄨ<br><br>ㄆ<br>ㄛˊ", "ㄨ<br><br>ㄆ<br>ㄨ<br>ㄛˊ"], 
-    answer: "ㄨ<br><br>ㄆ<br>ㄛˊ" },
-  { word: "11", choices: ["ㄇ<br>ㄨ<br>ㄛˇ<br><br>ㄈ<br>ㄚˇ", "ㄇ<br>ㄛˇ<br><br>ㄈ<br>ㄚˇ"], 
-    answer: "ㄇ<br>ㄛˇ<br><br>ㄈ<br>ㄚˇ" },
- { word: "12", choices: ["ㄨ<br>ㄛˋ<br><br>ㄈ<br>ㄤˊ", "ㄨ<br>ㄜˋ<br><br>ㄈ<br>ㄤˊ"], 
-    answer: "ㄨ<br>ㄛˋ<br><br>ㄈ<br>ㄤˊ" }
+// ------------------------
+// 正確答案列表
+const correctAnswers = [
+  "ㄏ<br>ㄜˊ<br><br>ㄇ<br>ㄚˇ",
+  "ㄧ<br>ㄠˋ<br><br>ㄑ<br>ㄩˋ",
+  "ㄆ<br>ㄠˋ<br><br>ㄗ<br>ㄠˇ",
+  "ㄅ<br>ㄢˋ<br><br>ㄌ<br>ㄨˋ",
+  "ㄩˋ<br><br>ㄉ<br>ㄠˋ",
+  "ㄏ<br>ㄜˊ<br><br>ㄌ<br>ㄧˊ",
+  "ㄇ<br>ㄤˊ<br><br>˙<br>ㄓ<br>ㄜ",
+  "ㄓ<br>ㄨˊ<br><br>ㄔ<br>ㄠˊ",
+  "ㄅ<br>ㄛ<br><br>ㄌ<br>ㄧˊ",
+  "ㄨ<br><br>ㄆ<br>ㄛˊ",
+  "ㄇ<br>ㄛˇ<br><br>ㄈ<br>ㄚˇ",
+  "ㄨ<br>ㄛˋ<br><br>ㄈ<br>ㄤˊ"
 ];
 
+// 注音符號替換規則（錯誤生成用）
+const zhuyinSwap = {
+  "ㄚ": ["ㄛ","ㄜ"], "ㄛ": ["ㄚ","ㄜ"], "ㄜ": ["ㄚ","ㄛ"],
+  "ㄧ": ["ㄩ","ㄧˋ"], "ㄩ": ["ㄧ","ㄩˋ"], "ㄧˋ": ["ㄧ","ㄩ"],
+  "ㄗ": ["ㄓ"], "ㄓ": ["ㄗ"],
+  "ㄅ": ["ㄆ"], "ㄆ": ["ㄅ"],
+  "ㄌ": ["ㄉ"], "ㄉ": ["ㄌ"],
+  "ㄔ": ["ㄘ"], "ㄘ": ["ㄔ"]
+};
 
+// 自動生成錯誤答案函式
+function generateWrongAnswer(correct) {
+  let parts = correct.split(/<br>/);
+  let indexes = [];
+  for (let i = 0; i < parts.length; i++) {
+    if (zhuyinSwap[parts[i]]) indexes.push(i);
+  }
+  if (indexes.length === 0) return correct;
+  let idx = indexes[Math.floor(Math.random() * indexes.length)];
+  let swaps = zhuyinSwap[parts[idx]];
+  parts[idx] = swaps[Math.floor(Math.random() * swaps.length)];
+  return parts.join("<br>");
+}
+
+// 生成 questions 陣列
+const questions = correctAnswers.map((ans, i) => {
+  const wrong = generateWrongAnswer(ans);
+  const choices = Math.random() < 0.5 ? [ans, wrong] : [wrong, ans];
+  return { word: (i+1).toString(), choices: choices, answer: ans };
+});
+
+// ------------------------
+// 遊戲邏輯變數
 let shuffledIndexes = [];
 let currentIndex = 0;
 let correctCount = 0;
-let wrongAnswers = []; // 記錄錯誤題目與答案
+let wrongAnswers = [];
 
 // 洗牌函式
 function shuffle(array) {
@@ -50,6 +71,15 @@ function shuffle(array) {
   }
   return array;
 }
+
+// 取得元素
+const startBtn = document.getElementById("start-button");
+const introContainer = document.getElementById("intro-container");
+const gameContainer = document.getElementById("game-container");
+const questionNumberEl = document.getElementById("question-word");
+const choicesEl = document.getElementById("choices");
+const feedbackEl = document.getElementById("feedback");
+const nextBtn = document.getElementById("next-button");
 
 // 開始遊戲
 function startGame() {
@@ -85,21 +115,15 @@ function checkAnswer(selected, q) {
     feedbackEl.style.color = "green";
     correctCount++;
   } else {
-    feedbackEl.textContent = `❌ 錯了，正確答案是：${q.answer.replace(/<br>/g, '')}`;
+    feedbackEl.textContent = `❌ 錯了，正確答案是：${q.answer.replace(/<br>/g,'')}`;
     feedbackEl.style.color = "red";
-    wrongAnswers.push({
-      word: q.word,
-      correct: q.answer,
-      selected: selected
-    });
+    wrongAnswers.push({ word: q.word, correct: q.answer, selected: selected });
   }
-  // 禁止繼續選擇
   Array.from(choicesEl.children).forEach(btn => btn.disabled = true);
   nextBtn.style.display = "inline-block";
 }
 
-// 下一題按鈕事件
-
+// 下一題
 nextBtn.onclick = () => {
   currentIndex++;
   if (currentIndex < questions.length) {
@@ -108,7 +132,6 @@ nextBtn.onclick = () => {
     showResult();
   }
 }
-
 
 // 顯示結果
 function showResult() {
@@ -122,21 +145,14 @@ function showResult() {
     <p>✅ 答對：${correctCount} 題</p>
     <p>❌ 答錯：${questions.length - correctCount} 題</p>
   `;
-
-
-  // 顯示完全答對訊息（可選）
-  if (wrongAnswers.length === 0) {
-    html += `<p>🎯 完全答對，太厲害了！</p>`;
-  }
-
+  if (wrongAnswers.length === 0) html += `<p>🎯 完全答對，太厲害了！</p>`;
   feedbackEl.innerHTML = html;
   restartBtn.style.display = "inline-block";
 }
 
-
-// 重新開始按鈕
+// 重新開始
 const restartBtn = document.createElement("button");
-restartBtn.id = "restart-button";  
+restartBtn.id = "restart-button";
 restartBtn.textContent = "✅ 重新開始遊戲";
 restartBtn.style.display = "none";
 restartBtn.onclick = () => {
@@ -150,7 +166,7 @@ restartBtn.onclick = () => {
 };
 gameContainer.appendChild(restartBtn);
 
-// 按開始鍵啟動遊戲
+// 開始遊戲按鈕
 startBtn.onclick = () => {
   introContainer.style.display = "none";
   gameContainer.style.display = "block";
