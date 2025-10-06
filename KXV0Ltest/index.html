@@ -43,7 +43,7 @@
 
 <script>
 // ------------------------
-// 正確答案列表
+// 正確答案列表（前10題）
 const correctAnswers = [
   "ㄏ<br>ㄜˊ<br><br>ㄇ<br>ㄚˇ",
   "ㄧ<br>ㄠˋ<br><br>ㄑ<br>ㄩˋ",
@@ -54,9 +54,7 @@ const correctAnswers = [
   "ㄇ<br>ㄤˊ<br><br>˙<br>ㄓ<br>ㄜ",
   "ㄓ<br>ㄨˊ<br><br>ㄔ<br>ㄠˊ",
   "ㄅ<br>ㄛ<br><br>ㄌ<br>ㄧˊ",
-  "ㄨ<br><br>ㄆ<br>ㄛˊ",
-  "ㄇ<br>ㄛˇ<br><br>ㄈ<br>ㄚˇ",
-  "ㄨ<br>ㄛˋ<br><br>ㄈ<br>ㄤˊ"
+  "ㄨ<br><br>ㄆ<br>ㄛˊ"
 ];
 
 // 注音符號替換規則（錯誤生成用）
@@ -181,4 +179,32 @@ function showResult(){
   `;
   if(wrongAnswers.length===0) html+=`<p>🎯 完全答對，太厲害了！</p>`;
   feedbackEl.innerHTML=html;
-  restartBtn.style.display="inline
+  restartBtn.style.display="inline-block";
+}
+
+// 重新開始
+const restartBtn = document.createElement("button");
+restartBtn.id="restart-button";
+restartBtn.textContent="✅ 重新開始遊戲";
+restartBtn.style.display="none";
+restartBtn.onclick=()=>{
+  gameContainer.style.display="none";
+  introContainer.style.display="block";
+  feedbackEl.textContent="";
+  choicesEl.innerHTML="";
+  questionNumberEl.textContent="";
+  nextBtn.style.display="none";
+  restartBtn.style.display="none";
+};
+gameContainer.appendChild(restartBtn);
+
+// 開始遊戲按鈕
+startBtn.onclick=()=>{
+  introContainer.style.display="none";
+  gameContainer.style.display="block";
+  startGame();
+};
+</script>
+
+</body>
+</html>
