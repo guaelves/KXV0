@@ -9,7 +9,7 @@ const nextBtn = document.getElementById("next-button");
 
 // === 題目資料（正確 / 錯誤） ===
 const questions = [
-  { word: "1", correct: "ㄒ<br>ㄧ<br>ㄝˋ<br><br>ㄒ<br>ㄧ<br>ㄝˋ", wrong: "ㄒ<br>ㄧ<br>ㄟˋ<br><br>ㄒ<br>ㄧ<br>ㄟˋ" },
+  { word: "1", correct: "ㄒ<br>ㄧ<br>ㄝˋ<br><br>˙<br>ㄒ<br>ㄧ<br>ㄝ", wrong: "ㄒ<br>ㄧ<br>ㄟˋ<br><br>˙<br>ㄒ<br>ㄧ<br>ㄟ" },
   { word: "2", correct: "ㄌ<br>ㄠˇ<br><br>ㄕ", wrong: "ㄌ<br>ㄠˇ<br><br>ㄙ" },
   { word: "3", correct: "ㄗ<br>ㄥˋ<br><br>ㄙ<br>ㄨㄥˋ", wrong: "ㄗ<br>ㄥˋ<br><br>ㄕ<br>ㄨㄥˋ" },
   { word: "4", correct: "ㄏ<br>ㄨㄚ<br><br>ㄉ<br>ㄨㄛˇ", wrong: "ㄈ<br>ㄨㄚ<br><br>ㄉ<br>ㄨㄛˇ" },
