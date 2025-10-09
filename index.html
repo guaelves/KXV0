@@ -2,32 +2,34 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>康軒首冊注音小遊戲</title>
   <style>
     body {
       font-family: "Microsoft JhengHei", sans-serif;
       background: #f5f8fa;
       text-align: center;
-      padding: 40px;
+      padding: 4vw;
+      margin: 0;
     }
     h1 {
       color: #333;
-      margin-bottom: 60px;
-      font-size: 36px;
+      margin-bottom: 6vw;
+      font-size: clamp(28px, 5vw, 48px);
     }
     .lesson-list {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr); /* 變成直式一欄 → 共9行 */
-      gap: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 4vw;
+      width: 100%;
       max-width: 900px;
       margin: auto;
     }
     .lesson-item {
-      background: #1E90FF;  /* 藍底 */
-      color: white;         /* 白字 */
-      padding: 40px 20px;
-      border-radius: 15px;
-      font-size: 60px;     /* 字體放大 */
+      background: #1E90FF;
+      color: white;
+      padding: 6vw 3vw;
+      border-radius: 20px;
       font-weight: bold;
       text-decoration: none;
       display: flex;
@@ -36,21 +38,23 @@
       flex-direction: column;
       box-shadow: 0 6px 10px rgba(0,0,0,0.15);
       transition: 0.2s;
+      width: 100%;
     }
     .lesson-item:hover {
       background: #005bbb;
       transform: scale(1.05);
     }
     .lesson-title {
-      font-size: 60px; /* 放大課次文字 */
-      margin-bottom: 20px;
+      font-size: clamp(32px, 6vw, 60px);
+      margin-bottom: 2vw;
     }
     .lesson-text {
-      font-size: 60px; /* 放大課文名稱文字 */
+      font-size: clamp(32px, 6vw, 60px);
+      line-height: 1.4;
     }
     footer {
-      margin-top: 50px;
-      font-size: 14px;
+      margin-top: 8vw;
+      font-size: clamp(12px, 3vw, 16px);
       color: #666;
     }
   </style>
