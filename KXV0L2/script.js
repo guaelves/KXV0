@@ -24,6 +24,9 @@ const questions = [
 ];
 
 
+
+
+
 let shuffledIndexes = [];
 let currentIndex = 0;
 let correctCount = 0;
@@ -54,9 +57,13 @@ function showQuestion() {
   feedbackEl.textContent = "";
   nextBtn.style.display = "none";
   const q = questions[shuffledIndexes[currentIndex]];
+
+  // 隨機左右排列
+  const shuffledChoices = shuffle([...q.choices]);
+
   questionNumberEl.textContent = `題目：${currentIndex + 1}`;
   choicesEl.innerHTML = "";
-  q.choices.forEach(choice => {
+  shuffledChoices.forEach(choice => {
     const btn = document.createElement("button");
     btn.innerHTML = choice;
     btn.className = "choice-button";
@@ -64,6 +71,7 @@ function showQuestion() {
     choicesEl.appendChild(btn);
   });
 }
+
 
 // 檢查答案
 function checkAnswer(selected, q) {
@@ -143,4 +151,3 @@ startBtn.onclick = () => {
   gameContainer.style.display = "block";
   startGame();
 };
-
