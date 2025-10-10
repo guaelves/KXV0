@@ -7,7 +7,6 @@ const choicesEl = document.getElementById("choices");
 const feedbackEl = document.getElementById("feedback");
 const nextBtn = document.getElementById("next-button");
 
-
 // 題目資料
 const questions = [
   { word: "1", choices: ["ㄏ<br>ㄜˊ<br><br>ㄇ<br>ㄚˇ", "ㄏ<br>ㄛˊ<br><br>ㄇ<br>ㄚˇ"], answer: "ㄏ<br>ㄜˊ<br><br>ㄇ<br>ㄚˇ" },
@@ -24,16 +23,43 @@ const questions = [
   { word: "12", choices: ["ㄨ<br>ㄛˋ<br><br>ㄈ<br>ㄤˊ", "ㄨ<br>ㄡˋ<br><br>ㄈ<br>ㄤˊ"], answer: "ㄨ<br>ㄛˋ<br><br>ㄈ<br>ㄤˊ" }
 ];
 
-
-
-
-
 let shuffledIndexes = [];
 let currentIndex = 0;
 let correctCount = 0;
-let wrongAnswers = []; // 記錄錯誤題目與答案
+let wrongAnswers = [];
 
-// 洗牌函式
+// ======== 簡單電腦音效 ========
+function playBeep(frequency, duration) {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.type = "sine";
+  osc.frequency.value = frequency;
+  gain.gain.setValueAtTime(0.1, ctx.currentTime);
+  osc.start();
+  osc.stop(ctx.currentTime + duration / 1000);
+}
+
+function playCorrect() {
+  playBeep(880, 100);
+  setTimeout(() => playBeep(1320, 100), 150);
+}
+
+function playWrong() {
+  playBeep(220, 150);
+  setTimeout(() => playBeep(150, 150), 200);
+}
+
+function playCelebrate() {
+  playBeep(660, 100);
+  setTimeout(() => playBeep(880, 100), 150);
+  setTimeout(() => playBeep(990, 100), 300);
+  setTimeout(() => playBeep(1320, 150), 450);
+}
+
+// ======== 洗牌函式 ========
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -42,7 +68,7 @@ function shuffle(array) {
   return array;
 }
 
-// 開始遊戲
+// ======== 開始遊戲 ========
 function startGame() {
   shuffledIndexes = shuffle([...Array(questions.length).keys()]);
   currentIndex = 0;
@@ -53,7 +79,7 @@ function startGame() {
   showQuestion();
 }
 
-// 顯示題目
+// ======== 顯示題目 ========
 function showQuestion() {
   feedbackEl.textContent = "";
   nextBtn.style.display = "none";
@@ -73,13 +99,13 @@ function showQuestion() {
   });
 }
 
-
-// 檢查答案
+// ======== 檢查答案 ========
 function checkAnswer(selected, q) {
   if (selected === q.answer) {
     feedbackEl.textContent = "✅ 答對了！";
     feedbackEl.style.color = "green";
     correctCount++;
+    playCorrect(); // 播放答對音
   } else {
     feedbackEl.textContent = `❌ 錯了，正確答案是：${q.answer.replace(/<br>/g, '')}`;
     feedbackEl.style.color = "red";
@@ -88,14 +114,13 @@ function checkAnswer(selected, q) {
       correct: q.answer,
       selected: selected
     });
+    playWrong(); // 播放答錯音
   }
-  // 禁止繼續選擇
   Array.from(choicesEl.children).forEach(btn => btn.disabled = true);
   nextBtn.style.display = "inline-block";
 }
 
-// 下一題按鈕事件
-
+// ======== 下一題按鈕事件 ========
 nextBtn.onclick = () => {
   currentIndex++;
   if (currentIndex < questions.length) {
@@ -105,8 +130,7 @@ nextBtn.onclick = () => {
   }
 }
 
-
-// 顯示結果
+// ======== 顯示結果 ========
 function showResult() {
   questionNumberEl.textContent = "";
   choicesEl.innerHTML = "";
@@ -119,18 +143,16 @@ function showResult() {
     <p>❌ 答錯：${questions.length - correctCount} 題</p>
   `;
 
-
-  // 顯示完全答對訊息（可選）
   if (wrongAnswers.length === 0) {
     html += `<p>🎯 完全答對，太厲害了！</p>`;
+    playCelebrate(); // 全對慶祝音
   }
 
   feedbackEl.innerHTML = html;
   restartBtn.style.display = "inline-block";
 }
 
-
-// 重新開始按鈕
+// ======== 重新開始按鈕 ========
 const restartBtn = document.createElement("button");
 restartBtn.id = "restart-button";  
 restartBtn.textContent = "✅ 重新開始遊戲";
@@ -146,7 +168,7 @@ restartBtn.onclick = () => {
 };
 gameContainer.appendChild(restartBtn);
 
-// 按開始鍵啟動遊戲
+// ======== 按開始鍵啟動遊戲 ========
 startBtn.onclick = () => {
   introContainer.style.display = "none";
   gameContainer.style.display = "block";
