@@ -10,28 +10,17 @@ const nextBtn = document.getElementById("next-button");
 
 // 題目資料
 const questions = [
-  { word: "1", choices: ["ㄜˊ", "ㄛˊ"], 
-    answer: "ㄜˊ" },
-  { word: "2", choices: ["ㄇ<br>ㄚ<br><br>ㄇ<br>ㄚ", "ㄇ<br>ㄚ<br><br>˙<br>ㄇ<br>ㄚ"],
-    answer: "ㄇ<br>ㄚ<br><br>˙<br>ㄇ<br>ㄚ" },
-  { word: "3", choices: ["ㄏ<br>ㄚ<br><br>ㄏ<br>ㄚ", "ㄈ<br>ㄚ<br><br>ㄈ<br>ㄚ"], 
-    answer: "ㄏ<br>ㄚ<br><br>ㄏ<br>ㄚ" },
-  { word: "4", choices: ["ㄏ<br>ㄠˇ<br><br>ㄉ<br>ㄜˊ<br><br>ㄧˋ", "ㄏ<br>ㄠˇ<br><br>ㄉ<br>ㄛˊ<br><br>ㄧˋ"], 
-    answer: "ㄏ<br>ㄠˇ<br><br>ㄉ<br>ㄜˊ<br><br>ㄧˋ" },
-  { word: "5", choices: ["ㄏ<br>ㄨ<br><br>ㄔ<br>ㄨ", "ㄈ<br>ㄨ<br><br>ㄔ<br>ㄨ"], 
-    answer: "ㄈ<br>ㄨ<br><br>ㄔ<br>ㄨ" },
-  { word: "6", choices: ["ㄨˇ<br><br>ㄓ", "ㄨˇ<br><br>ㄗ"], 
-    answer: "ㄨˇ<br><br>ㄓ" },
-  { word: "7", choices: ["ㄅ<br>ㄠˇ<br><br>˙<br>ㄅ<br>ㄠ", "ㄅ<br>ㄠˇ<br><br>ㄅ<br>ㄠˇ"], 
-    answer: "ㄅ<br>ㄠˇ<br><br>˙<br>ㄅ<br>ㄠ" },
-  { word: "8", choices: ["ㄧ<br>ㄚˊ<br><br>ㄘˇ", "ㄧ<br>ㄚˊ<br><br>ㄔˇ"], 
-    answer: "ㄧ<br>ㄚˊ<br><br>ㄔˇ" },
-  { word: "9", choices: ["ㄏ<br>ㄛ<br><br>ㄔ<br>ㄚˊ", "ㄏ<br>ㄜ<br><br>ㄔ<br>ㄚˊ"], 
-    answer: "ㄏ<br>ㄜ<br><br>ㄔ<br>ㄚˊ" },
-  { word: "10", choices: ["ㄓ<br>ㄨ<br><br>ㄅ<br>ㄠˇ", "ㄗ<br>ㄨ<br><br>ㄅ<br>ㄠˇ"], 
-    answer: "ㄓ<br>ㄨ<br><br>ㄅ<br>ㄠˇ" },
-  { word: "11", choices: ["ㄇ<br>ㄚˇ<br><br>ㄔ<br>ㄛ", "ㄇ<br>ㄚˇ<br><br>ㄔ<br>ㄜ"], 
-    answer: "ㄇ<br>ㄚˇ<br><br>ㄔ<br>ㄜ" }
+  { word: "1", choices: ["ㄜˊ", "ㄛˊ"], answer: "ㄜˊ" },
+  { word: "2", choices: ["ㄇ<br>ㄚ<br><br>˙<br>ㄇ<br>ㄚ", "ㄇ<br>ㄚ<br><br>ㄇ<br>ㄚ"], answer: "ㄇ<br>ㄚ<br><br>˙<br>ㄇ<br>ㄚ" },
+  { word: "3", choices: ["ㄏ<br>ㄚ<br><br>ㄏ<br>ㄚ", "ㄈ<br>ㄚ<br><br>ㄈ<br>ㄚ"], answer: "ㄏ<br>ㄚ<br><br>ㄏ<br>ㄚ" },
+  { word: "4", choices: ["ㄏ<br>ㄠˇ<br><br>ㄉ<br>ㄜˊ<br><br>ㄧˋ", "ㄏ<br>ㄠˇ<br><br>ㄉ<br>ㄛˊ<br><br>ㄧˋ"], answer: "ㄏ<br>ㄠˇ<br><br>ㄉ<br>ㄜˊ<br><br>ㄧˋ" },
+  { word: "5", choices: ["ㄈ<br>ㄨ<br><br>ㄔ<br>ㄨ", "ㄏ<br>ㄨ<br><br>ㄔ<br>ㄨ"], answer: "ㄈ<br>ㄨ<br><br>ㄔ<br>ㄨ" },
+  { word: "6", choices: ["ㄨˇ<br><br>ㄓ", "ㄨˇ<br><br>ㄗ"], answer: "ㄨˇ<br><br>ㄓ" },
+  { word: "7", choices: ["ㄅ<br>ㄠˇ<br><br>˙<br>ㄅ<br>ㄠ", "ㄅ<br>ㄠˇ<br><br>ㄅ<br>ㄠ"], answer: "ㄅ<br>ㄠˇ<br><br>˙<br>ㄅ<br>ㄠ" },
+  { word: "8", choices: ["ㄧ<br>ㄚˊ<br><br>ㄔˇ", "ㄧ<br>ㄚˊ<br><br>ㄔˇ"], answer: "ㄧ<br>ㄚˊ<br><br>ㄔˇ" },
+  { word: "9", choices: ["ㄏ<br>ㄜ<br><br>ㄔ<br>ㄚˊ", "ㄏ<br>ㄛ<br><br>ㄔ<br>ㄚˊ"], answer: "ㄏ<br>ㄜ<br><br>ㄔ<br>ㄚˊ" },
+  { word: "10", choices: ["ㄓ<br>ㄨ<br><br>ㄅ<br>ㄠˇ", "ㄗ<br>ㄨ<br><br>ㄅ<br>ㄠˇ"], answer: "ㄓ<br>ㄨ<br><br>ㄅ<br>ㄠˇ" },
+  { word: "11", choices: ["ㄇ<br>ㄚˇ<br><br>ㄔ<br>ㄜ", "ㄇ<br>ㄚˇ<br><br>ㄔ<br>ㄛ"], answer: "ㄇ<br>ㄚˇ<br><br>ㄔ<br>ㄜ" }
 ];
 
 
@@ -154,3 +143,4 @@ startBtn.onclick = () => {
   gameContainer.style.display = "block";
   startGame();
 };
+
