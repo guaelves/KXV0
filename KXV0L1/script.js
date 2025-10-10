@@ -55,15 +55,12 @@ const questions = [
   { word: "10", choices: ["ㄉ<br>ㄠˋ<br><br>ㄇ<br>ㄧˇ", "ㄉ<br>ㄠˋ<br><br>ㄅ<br>ㄧˇ"], answer: "ㄉ<br>ㄠˋ<br><br>ㄇ<br>ㄧˇ" }
 ];
 
-
-
-
 let shuffledIndexes = [];
 let currentIndex = 0;
 let correctCount = 0;
-let wrongAnswers = []; // 記錄錯誤題目與答案
+let wrongAnswers = [];
 
-// 洗牌函式
+// 洗牌
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -88,8 +85,6 @@ function showQuestion() {
   feedbackEl.textContent = "";
   nextBtn.style.display = "none";
   const q = questions[shuffledIndexes[currentIndex]];
-
-  // 隨機左右排列
   const shuffledChoices = shuffle([...q.choices]);
 
   questionNumberEl.textContent = `題目：${currentIndex + 1}`;
@@ -103,29 +98,24 @@ function showQuestion() {
   });
 }
 
-
-// 檢查答案
+// 檢查答案 + 音效
 function checkAnswer(selected, q) {
   if (selected === q.answer) {
     feedbackEl.textContent = "✅ 答對了！";
     feedbackEl.style.color = "green";
     correctCount++;
+    playCorrectSound();
   } else {
     feedbackEl.textContent = `❌ 錯了，正確答案是：${q.answer.replace(/<br>/g, '')}`;
     feedbackEl.style.color = "red";
-    wrongAnswers.push({
-      word: q.word,
-      correct: q.answer,
-      selected: selected
-    });
+    wrongAnswers.push({ word: q.word, correct: q.answer, selected: selected });
+    playWrongSound();
   }
-  // 禁止繼續選擇
   Array.from(choicesEl.children).forEach(btn => btn.disabled = true);
   nextBtn.style.display = "inline-block";
 }
 
-// 下一題按鈕事件
-
+// 下一題
 nextBtn.onclick = () => {
   currentIndex++;
   if (currentIndex < questions.length) {
@@ -133,10 +123,9 @@ nextBtn.onclick = () => {
   } else {
     showResult();
   }
-}
+};
 
-
-// 顯示結果
+// 結果
 function showResult() {
   questionNumberEl.textContent = "";
   choicesEl.innerHTML = "";
@@ -148,19 +137,15 @@ function showResult() {
     <p>✅ 答對：${correctCount} 題</p>
     <p>❌ 答錯：${questions.length - correctCount} 題</p>
   `;
-
-
-  // 顯示完全答對訊息（可選）
   if (wrongAnswers.length === 0) {
     html += `<p>🎯 完全答對，太厲害了！</p>`;
+    playWinSound();
   }
-
   feedbackEl.innerHTML = html;
   restartBtn.style.display = "inline-block";
 }
 
-
-// 重新開始按鈕
+// 重新開始
 const restartBtn = document.createElement("button");
 restartBtn.id = "restart-button";  
 restartBtn.textContent = "✅ 重新開始遊戲";
@@ -176,10 +161,9 @@ restartBtn.onclick = () => {
 };
 gameContainer.appendChild(restartBtn);
 
-// 按開始鍵啟動遊戲
+// 開始遊戲
 startBtn.onclick = () => {
   introContainer.style.display = "none";
   gameContainer.style.display = "block";
   startGame();
 };
-
