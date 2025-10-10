@@ -7,6 +7,39 @@ const choicesEl = document.getElementById("choices");
 const feedbackEl = document.getElementById("feedback");
 const nextBtn = document.getElementById("next-button");
 
+// 🎵 音效產生器（不用檔案）
+function playBeep(frequency, duration) {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = ctx.createOscillator();
+  const gain = ctx.createGain();
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(frequency, ctx.currentTime);
+  gain.gain.setValueAtTime(0.1, ctx.currentTime); // 音量
+  oscillator.connect(gain);
+  gain.connect(ctx.destination);
+  oscillator.start();
+  oscillator.stop(ctx.currentTime + duration / 1000);
+}
+
+// ✅ 答對音效（叮叮）
+function playCorrectSound() {
+  playBeep(880, 100);
+  setTimeout(() => playBeep(1320, 150), 120);
+}
+
+// ❌ 答錯音效（噗噗）
+function playWrongSound() {
+  playBeep(220, 200);
+  setTimeout(() => playBeep(180, 250), 220);
+}
+
+// 🎉 全對慶祝音效（和弦閃亮）
+function playWinSound() {
+  playBeep(523, 200); // C5
+  setTimeout(() => playBeep(659, 200), 150); // E5
+  setTimeout(() => playBeep(784, 300), 300); // G5
+  setTimeout(() => playBeep(1046, 400), 500); // C6
+}
 
 // 題目資料
 const questions = [
@@ -149,3 +182,4 @@ startBtn.onclick = () => {
   gameContainer.style.display = "block";
   startGame();
 };
+
