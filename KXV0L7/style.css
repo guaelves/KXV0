@@ -1,0 +1,83 @@
+#lesson-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+
+#intro-container {
+  font-size: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+
+#start-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#start-button:hover {
+  background-color: #1976D2;
+}
+
+
+#next-button,
+#restart-button {
+  padding: 8px 20px;
+  font-size: 14px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+/* 頁面整體樣式 */
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 遊戲框樣式 */
+#game-container {
+  background-color: #ffffff;
+  padding: 30px;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 題目文字 */
+#question-word {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 選項區：橫向排列並置中 */
+#choices {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* 選項按鈕樣式（直式注音） */
+.choice-button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 50px;
