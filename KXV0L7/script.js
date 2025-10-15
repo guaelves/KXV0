@@ -25,7 +25,6 @@ const questions = [
   { word: "14", correct: "ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄣˊ", wrong: "ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄥˊ" }
 ];
 
-
 let shuffledIndexes = [];
 let currentIndex = 0;
 let correctCount = 0;
