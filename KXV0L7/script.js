@@ -9,21 +9,22 @@ const nextBtn = document.getElementById("next-button");
 
 // 題目資料
 const questions = [
-  { word: "1", correct: "ㄨ<br><br>ㄍ<br>ㄨ<br>ㄟ", wrong: "ㄨ<br>ㄍ<br>ㄟ" },
-  { word: "2", correct: "ㄊ<br>ㄨˋ<br><br>˙<br>ㄗ", wrong: "ㄊ<br>ㄨˋ<br>˙<br>ㄓ" },
-  { word: "3", correct: "ㄅ<br>ㄧˇ<br><br>ㄙ<br>ㄞˋ", wrong: "ㄅ<br>ㄧˇ<br><br>ㄕ<br>ㄞˋ" },
-  { word: "4", correct: "ㄎ<br>ㄨ<br>ㄞˋ<br><br>ㄙ<br>ㄨˋ", wrong: "ㄎ<br>ㄨ<br>ㄞˋ<br><br>ㄕ<br>ㄨˋ" },
-  { word: "5", correct: "ㄌ<br>ㄧ<br>ㄥˇ<br><br>ㄒ<br>ㄧ<br>ㄢ", wrong: "ㄌ<br>ㄧ<br>ㄣˇ<br><br>ㄒ<br>ㄧ<br>ㄢ" },
-  { word: "6", correct: "ㄕ<br>ㄨ<br>ㄟˋ<br><br>ㄐ<br>ㄧ<br>ㄠˋ", wrong: "ㄙ<br>ㄨ<br>ㄟˋ<br><br>ㄐ<br>ㄧ<br>ㄠˋ" },
-  { word: "7", correct: "ㄌ<br>ㄨ<br>ㄛˋ<br><br>ㄏ<br>ㄡˋ", wrong: "ㄌ<br>ㄨ<br>ㄡˋ<br><br>ㄏ<br>ㄡˋ" },
-  { word: "8", correct: "ㄙ<br>ㄞˋ<br><br>ㄆ<br>ㄠˇ", wrong: "ㄕ<br>ㄞˋ<br><br>ㄆ<br>ㄠˇ" },
-  { word: "9", correct: "ㄑ<br>ㄧˋ<br><br>ㄋ<br>ㄟˇ", wrong: "ㄑ<br>ㄧˋ<br><br>ㄋ<br>ㄧ<br>ㄝˇ" },
-  { word: "10", correct: "ㄍ<br>ㄣ<br><br>ㄙ<br>ㄨ<br>ㄟˊ", wrong: "ㄍ<br>ㄥ<br><br>ㄙ<br>ㄨ<br>ㄟˊ" },
-  { word: "11", correct: "ㄓ<br>ㄨ<br>ㄟ<br><br>ㄓ<br>ㄨˊ", wrong: "ㄓ<br>ㄨ<br>ㄟ<br><br>ㄗ<br>ㄨˊ" },
-  { word: "12", correct: "ㄏ<br>ㄡˋ<br><br>ㄇ<br>ㄧ<br>ㄢˋ", wrong: "ㄏ<br>ㄛˋ<br><br>ㄇ<br>ㄧ<br>ㄢˋ" },
-  { word: "13", correct: "ㄊ<br>ㄧ<br>ㄠˋ<br><br>ㄕ<br>ㄥˊ", wrong: "ㄊ<br>ㄧ<br>ㄠˋ<br><br>ㄕ<br>ㄣˊ" },
-  { word: "14", correct: "ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄣˊ", wrong: "ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄥˊ" }
+  { word: "1", choices: ["ㄨ<br><br>ㄍ<br>ㄨ<br>ㄟ", "ㄨ<br>ㄍ<br>ㄟ"], answer: "ㄨ<br><br>ㄍ<br>ㄨ<br>ㄟ" },
+  { word: "2", choices: ["ㄊ<br>ㄨˋ<br><br>˙<br>ㄗ", "ㄊ<br>ㄨˋ<br>˙<br>ㄓ"], answer: "ㄊ<br>ㄨˋ<br><br>˙<br>ㄗ" },
+  { word: "3", choices: ["ㄅ<br>ㄧˇ<br><br>ㄙ<br>ㄞˋ", "ㄅ<br>ㄧˇ<br><br>ㄕ<br>ㄞˋ"], answer: "ㄅ<br>ㄧˇ<br><br>ㄙ<br>ㄞˋ" },
+  { word: "4", choices: ["ㄎ<br>ㄨ<br>ㄞˋ<br><br>ㄙ<br>ㄨˋ", "ㄎ<br>ㄨ<br>ㄞˋ<br><br>ㄕ<br>ㄨˋ"], answer: "ㄎ<br>ㄨ<br>ㄞˋ<br><br>ㄙ<br>ㄨˋ" },
+  { word: "5", choices: ["ㄌ<br>ㄧ<br>ㄥˇ<br><br>ㄒ<br>ㄧ<br>ㄢ", "ㄌ<br>ㄧ<br>ㄣˇ<br><br>ㄒ<br>ㄧ<br>ㄢ"], answer: "ㄌ<br>ㄧ<br>ㄥˇ<br><br>ㄒ<br>ㄧ<br>ㄢ" },
+  { word: "6", choices: ["ㄕ<br>ㄨ<br>ㄟˋ<br><br>ㄐ<br>ㄧ<br>ㄠˋ", "ㄙ<br>ㄨ<br>ㄟˋ<br><br>ㄐ<br>ㄧ<br>ㄠˋ"], answer: "ㄕ<br>ㄨ<br>ㄟˋ<br><br>ㄐ<br>ㄧ<br>ㄠˋ" },
+  { word: "7", choices: ["ㄌ<br>ㄨ<br>ㄛˋ<br><br>ㄏ<br>ㄡˋ", "ㄌ<br>ㄨ<br>ㄡˋ<br><br>ㄏ<br>ㄡˋ"], answer: "ㄌ<br>ㄨ<br>ㄛˋ<br><br>ㄏ<br>ㄡˋ" },
+  { word: "8", choices: ["ㄙ<br>ㄞˋ<br><br>ㄆ<br>ㄠˇ", "ㄕ<br>ㄞˋ<br><br>ㄆ<br>ㄠˇ"], answer: "ㄙ<br>ㄞˋ<br><br>ㄆ<br>ㄠˇ" },
+  { word: "9", choices: ["ㄑ<br>ㄧˋ<br><br>ㄋ<br>ㄟˇ", "ㄑ<br>ㄧˋ<br><br>ㄋ<br>ㄧ<br>ㄝˇ"], answer: "ㄑ<br>ㄧˋ<br><br>ㄋ<br>ㄟˇ" },
+  { word: "10", choices: ["ㄍ<br>ㄣ<br><br>ㄙ<br>ㄨ<br>ㄟˊ", "ㄍ<br>ㄥ<br><br>ㄙ<br>ㄨ<br>ㄟˊ"], answer: "ㄍ<br>ㄣ<br><br>ㄙ<br>ㄨ<br>ㄟˊ" },
+  { word: "11", choices: ["ㄓ<br>ㄨ<br>ㄟ<br><br>ㄓ<br>ㄨˊ", "ㄓ<br>ㄨ<br>ㄟ<br><br>ㄗ<br>ㄨˊ"], answer: "ㄓ<br>ㄨ<br>ㄟ<br><br>ㄓ<br>ㄨˊ" },
+  { word: "12", choices: ["ㄏ<br>ㄡˋ<br><br>ㄇ<br>ㄧ<br>ㄢˋ", "ㄏ<br>ㄛˋ<br><br>ㄇ<br>ㄧ<br>ㄢˋ"], answer: "ㄏ<br>ㄡˋ<br><br>ㄇ<br>ㄧ<br>ㄢˋ" },
+  { word: "13", choices: ["ㄊ<br>ㄧ<br>ㄠˋ<br><br>ㄕ<br>ㄥˊ", "ㄊ<br>ㄧ<br>ㄠˋ<br><br>ㄕ<br>ㄣˊ"], answer: "ㄊ<br>ㄧ<br>ㄠˋ<br><br>ㄕ<br>ㄥˊ" },
+  { word: "14", choices: ["ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄣˊ", "ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄥˊ"], answer: "ㄐ<br>ㄧ<br>ㄥ<br><br>ㄕ<br>ㄣˊ" }
 ];
+
 
 let shuffledIndexes = [];
 let currentIndex = 0;
